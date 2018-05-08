@@ -10,7 +10,7 @@ export class LivepreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    hty
+
 
   }
 
