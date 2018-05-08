@@ -1,0 +1,97 @@
+#bike-container{
+  /*navbar got 40px height and 1rem padding hence this*/
+  padding-top: 40px;
+  margin-top: 1rem;
+}
+
+#bike-display{
+
+  width: 100%;
+  background-color: rgb(238, 168, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  /*relative makes the absoulte img children follow this container*/
+
+}
+
+
+#bike-progress{
+  height: 0.25rem;
+  background-color: yellow;
+
+}
+
+#bike-section{
+
+  background-color: green;
+
+
+}
+
+#bike-navigation{
+  height: 5rem;
+  background-color: red;
+
+}
+
+#bike-section-title{
+  height: 3.5rem;
+  background-color: cyan;
+  padding: 0.5rem 0;
+}
+
+#bike-section-title h1{
+  font-size: 2rem;
+}
+
+#bike-section-content{
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 992px) {
+  #bike-display{
+    width: auto;
+    height: calc(100vh - 40px - 6rem);
+    min-height: 12rem;
+
+  }
+  #bike-progress{
+    height: calc(5rem);
+
+  }
+
+  #bike-section{
+    height: calc(100vh - 40px - 6rem);
+    min-height: 12rem;
+  }
+
+  #bike-section-content{
+    overflow-y: auto;
+    height: calc(100vh - 40px - 9.5rem);
+    min-height: 9rem;
+
+  }
+
+  #bike-navigation{
+    height: calc(5rem);
+
+  }
+
+}
+
+
+#bike-section-content .row{
+
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(20,20,20,0.3);
+}
+
+#bike-section-content .row:nth-child(even){
+
+  background-color: rgba(250,250,250,0.7);
+
+}
