@@ -1,3 +1,59 @@
-<p>
-  builder works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">Larry vs Harry</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid" id="bike-container">
+  <div class="row">
+    <div id="bike-display-container" class="col-lg-8 px-0">
+      <div id="bike-display" class="p-2">
+
+      <app-livepreview></app-livepreview>
+
+      </div>
+      <div id="bike-progress">
+
+      </div>
+    </div>
+    <div id="bike-section-container" class="col-lg-4 px-0">
+      <div id="bike-section" >
+        <div id="bike-section-title" class="text-center">
+          <h1>Customize</h1>
+        </div>
+        <div id="bike-section-content" class="px-2 text-center text-sm-left">
+
+          <div class="container-fluid py-3  ">
+
+
+          <app-control></app-control>
+
+
+          </div>
+
+
+        </div>
+      </div>
+
+      <div id="bike-navigation">
+
+      </div>
+    </div>
+  </div>
+
+</div>
