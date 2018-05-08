@@ -11,7 +11,6 @@ export class LivepreviewComponent implements OnInit {
 
   ngOnInit() {
 
-    check cecked
   }
 
 }
