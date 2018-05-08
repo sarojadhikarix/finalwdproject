@@ -11,6 +11,9 @@ export class BuilderService{
   constructor(private http: Http) {
   }
 
+  getControls(){
+      var controls = ['Learning Angular 2', "Pro TypeScript", "ASP.NET"]; 
+  }
 
 }
 
