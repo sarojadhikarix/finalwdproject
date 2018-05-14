@@ -19,7 +19,7 @@ export class ControlComponent implements OnInit {
       data => {
         this.controls = data;
         console.log(data);
-      }
+      });
   }
 
 }
