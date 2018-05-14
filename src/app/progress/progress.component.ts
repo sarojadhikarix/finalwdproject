@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { ProgressService } from './progress.service';
 
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.css']
+  styleUrls: ['./progress.component.css'],
+  providers: [ProgressService]
+
 })
 export class ProgressComponent implements OnInit {
 
-  progressItem = document.getElementsByClassName('progress-item').length;
+    constructor(private progressService: ProgressService) { }
+    section = [];
 
+    ngOnInit() {
 
+      this.progressService.getControls().subscribe(data => {
+        this.section = data;
+      });
 
+    }
 
-  constructor() { }
-
-  ngOnInit() {
-
-  }
 
 }

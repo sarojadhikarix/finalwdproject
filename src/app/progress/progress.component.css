@@ -10,12 +10,10 @@
   }
 
   .progress-item{
-
     position: relative;
     height: 4rem;
     width: 3rem;
     line-height: 1rem;
-
 
   }
 
@@ -30,24 +28,29 @@
   .progress-bar{
     margin-top: 1.3rem;
     height: 0.4rem;
-    width: calc(50% - 6rem);
+    width: calc(30% - 6rem);
     background-color: white;
     border-top: 0.15rem solid black;
     border-bottom: 0.15rem solid black;
 
   }
 
+  .progress-percent{
+    height: 0.4rem;
+    width: 0;
+    background-color: red;
+  }
+
   .progress-name{
     text-align: center;
-
     float: left;
     font-size: 1rem;
     margin-bottom: 0;
     text-align: center;
     white-space: nowrap;
     overflow-x: visible;
-    width: 6rem;
-    margin-left: -50%;
+    width: 10rem;
+    margin-left: calc(-50% - 2rem);
 
   }
 
