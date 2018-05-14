@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ControlService } from './control.service';
 @Component({
   selector: 'app-control',
   templateUrl: './control.component.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlComponent implements OnInit {
 
-  constructor() { }
+  constructor(private controlService : ControlService) { }
 
   ngOnInit() {
   }
