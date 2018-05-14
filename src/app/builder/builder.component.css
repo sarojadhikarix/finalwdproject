@@ -24,6 +24,8 @@
 
 }
 
+
+
 #bike-section{
 
   background-color: green;
@@ -60,8 +62,8 @@
 
   }
   #bike-progress{
-    height: calc(5rem);
-
+    height: 5rem;
+    padding: 0.5rem 0;
   }
 
   #bike-section{

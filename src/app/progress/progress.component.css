@@ -1,0 +1,54 @@
+@media (min-width: 992px) {
+
+  #progress-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 0 10%;
+    justify-content: center;
+  }
+
+  .progress-item{
+
+    position: relative;
+    height: 4rem;
+    width: 3rem;
+    line-height: 1rem;
+
+
+  }
+
+  .progress-icon{
+    display: block;
+    float: left;
+    height: 3rem;
+    width: 3rem;
+    background-color: pink;
+  }
+
+  .progress-bar{
+    margin-top: 1.3rem;
+    height: 0.4rem;
+    width: calc(50% - 6rem);
+    background-color: white;
+    border-top: 0.15rem solid black;
+    border-bottom: 0.15rem solid black;
+
+  }
+
+  .progress-name{
+    text-align: center;
+
+    float: left;
+    font-size: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: visible;
+    width: 6rem;
+    margin-left: -50%;
+
+  }
+
+}

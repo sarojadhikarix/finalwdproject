@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 
 import { AppComponent } from './app.component';
 import { BuilderComponent } from './builder/builder.component';
+import { ProgressComponent } from './progress/progress.component';
 import { ControlComponent } from './control/control.component';
 import { LivepreviewComponent } from './livepreview/livepreview.component';
 import { CartComponent } from './cart/cart.component';
@@ -25,6 +26,7 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     BuilderComponent,
+    ProgressComponent,
     ControlComponent,
     LivepreviewComponent,
     CartComponent,
