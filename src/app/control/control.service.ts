@@ -1,18 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 
 @Injectable()
-export class BuilderService{
-  constructor(private http: Http) {
+export class ControlService{
+  constructor(private db: AngularFireDatabase) {
   }
 
   getControls(){
-      var controls = ['Learning Angular 2', "Pro TypeScript", "ASP.NET"]; 
+    return  this.db.list('/');
   }
 
 }
