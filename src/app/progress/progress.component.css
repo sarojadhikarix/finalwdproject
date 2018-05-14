@@ -10,7 +10,7 @@
   }
 
   .progress-item{
-    position: relative;
+
     height: 4rem;
     width: 3rem;
     line-height: 1rem;
@@ -18,8 +18,7 @@
   }
 
   .progress-icon{
-    display: block;
-    float: left;
+
     height: 3rem;
     width: 3rem;
     background-color: pink;
@@ -28,7 +27,7 @@
   .progress-bar{
     margin-top: 1.3rem;
     height: 0.4rem;
-    width: calc(30% - 6rem);
+    width: 100%;
     background-color: white;
     border-top: 0.15rem solid black;
     border-bottom: 0.15rem solid black;
@@ -43,7 +42,6 @@
 
   .progress-name{
     text-align: center;
-    float: left;
     font-size: 1rem;
     margin-bottom: 0;
     text-align: center;
@@ -53,5 +51,4 @@
     margin-left: calc(-50% - 2rem);
 
   }
-
 }
