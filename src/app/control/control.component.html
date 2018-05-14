@@ -1,22 +1,12 @@
 <div class="card ">
   <div class="card-header">
-    Choose your weapon
+      {{stepstitle[currentstep]}}
   </div>
   <div class="card-body">
     <table class="table table-hover">
       <tbody>
-        <tr>
-          <td>Full Bike</td>
-          <td></td>
-          <td>More info</td>
-        </tr>
-        <tr>
-          <td>Framekit</td>
-          <td></td>
-          <td>More info</td>
-        </tr>
-        <tr>
-          <td>Steps E8000 EBullitt Full Bike</td>
+        <tr *ngFor="let item of steps[currentstep]">
+          <td>{{item.$key}}</td>
           <td></td>
           <td>More info</td>
         </tr>
@@ -24,7 +14,7 @@
     </table>
   </div>
   <div class="card-footer text-muted">
-    <a href="#" class="btn btn-primary float-left">Back</a>
-    <a href="#" class="btn btn-primary float-right">Next</a>
+    <a href="#" (click)="back()" class="btn btn-primary float-left">Back</a>
+    <a href="#" id="nextbutton" (click)="next()" class="btn btn-primary float-right">Next</a>
   </div>
 </div>
