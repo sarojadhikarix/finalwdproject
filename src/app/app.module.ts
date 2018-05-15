@@ -13,6 +13,7 @@ import { LivepreviewComponent } from './livepreview/livepreview.component';
 import { CartComponent } from './cart/cart.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HeaderComponent } from './header/header.component';
+import { SelectionComponent } from './selection/selection.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCH3QfN6zKmOmxXlMXkTh-gFB2dVyfN4vo",
@@ -31,7 +32,8 @@ export const firebaseConfig = {
     LivepreviewComponent,
     CartComponent,
     NotfoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    SelectionComponent
   ],
   imports: [
     BrowserModule,
