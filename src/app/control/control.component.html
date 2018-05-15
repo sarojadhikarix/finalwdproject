@@ -1,5 +1,7 @@
+<div *ngFor="let control of controls">
+  <div >
 <div id="bike-section-title" class="card-header text-center">
-  <h1>{{stepstitle[currentstep]}}</h1>
+  <h1>{{ control.$key}}</h1>
 </div>
 <div id="bike-section-content" class="px-2 text-center text-sm-left">
 
@@ -9,8 +11,8 @@
   <div class="card-body">
     <table class="table table-hover">
       <tbody>
-        <tr *ngFor="let item of steps[currentstep]">
-          <td>{{item.$key}}</td>
+        <tr *ngFor="let con of controls; let i = index" >
+          <td>{{con[i]}}</td>
           <td></td>
           <td>More info</td>
         </tr>
@@ -23,6 +25,8 @@
 </div>
 
 
+</div>
+</div>
 </div>
 
 <div id="bike-navigation">

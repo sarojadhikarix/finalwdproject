@@ -6,8 +6,8 @@ export class ControlService{
   constructor(private db: AngularFireDatabase) {
   }
 
-  getControls(title){
-    return  this.db.list('/' + title);
+  getControls(location){
+    return  this.db.list('/' + location);
   }
 
 }

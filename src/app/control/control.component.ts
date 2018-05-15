@@ -26,35 +26,10 @@ export class ControlComponent implements OnInit {
 
   ngOnInit() {
 
-    this.controlService.getControls('Choose Your Weapon').subscribe(
+    this.controlService.getControls('Bikes/' + this.type ).subscribe(
       data => {
-        this.steps[0] = data;
-        this.stepstitle[0] = 'Choose Your Weapon';
-      });
-    this.controlService.getControls('Colorways').subscribe(
-      data => {
-        this.steps[1] = data;
-        this.stepstitle[1] = 'Colorways';
-      });
-    this.controlService.getControls('Drive Train').subscribe(
-      data => {
-        this.steps[2] = data;
-        this.stepstitle[2] = 'Drive Train';
-      });
-    this.controlService.getControls('Customise').subscribe(
-      data => {
-        this.steps[3] = data;
-        this.stepstitle[3] = 'Customise';
-      });
-    this.controlService.getControls('Accessories').subscribe(
-      data => {
-        this.steps[4] = data;
-        this.stepstitle[4] = 'Accessories';
-      });
-    this.controlService.getControls('Extras').subscribe(
-      data => {
-        this.steps[5] = data;
-        this.stepstitle[5] = 'Extras';
+        this.controls = data;
+        console.log(this.controls);
       });
   }
 
