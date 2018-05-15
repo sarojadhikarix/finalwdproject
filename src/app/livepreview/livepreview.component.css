@@ -1,10 +1,10 @@
-#bike-display img{
+img{
   max-height: 100%;
   max-width: 100%;
   position: absolute;
   display: block;
 }
 
-#bike-display img:first-child{
+img:first-child{
   position: static;
 }
