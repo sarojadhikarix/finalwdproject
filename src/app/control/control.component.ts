@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ControlService } from './control.service';
 
@@ -15,6 +15,7 @@ import { ControlService } from './control.service';
 export class ControlComponent implements OnInit {
 
   constructor(private controlService: ControlService) { }
+  @Input() type;
   steps = [];
   stepstitle = [];
   controls;

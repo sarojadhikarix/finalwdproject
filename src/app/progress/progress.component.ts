@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProgressService } from './progress.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { ProgressService } from './progress.service';
 export class ProgressComponent implements OnInit {
 
     constructor(private progressService: ProgressService) { }
+    @Input() type;
     section = [];
 
     ngOnInit() {
