@@ -1,10 +1,12 @@
 
-<div id="progress-container" >
-  <ng-container *ngFor="let item of section; let last = last">
-      <div class="progress-item">
+<div id="progress-container">
+
+  <ng-container *ngFor="let item of section; let last = last" >
+      <div class="progress-item d-none d-lg-block" >
         <div class="rounded-circle progress-icon"></div>
         <p class="progress-name lead">{{item.$key}}</p>
       </div>
       <div class="progress-bar" *ngIf="!last"><div class="progress-percent"></div></div>
   </ng-container>
+
 </div>

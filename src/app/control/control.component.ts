@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { ControlService } from './control.service';
-
 
 @Component({
   selector: 'app-control',
@@ -11,65 +9,77 @@ import { ControlService } from './control.service';
 })
 
 
-
 export class ControlComponent implements OnInit {
 
   constructor(private controlService: ControlService) { }
   @Input() type;
-  steps = [];
-  stepstitle = [];
-  controls;
+  stepsdata:any = {};
+  stepstitle:any[] = [];
   startstep = 0;
-  endstep = 5;
   currentstep = 0;
-  
 
   ngOnInit() {
 
-    this.controlService.getControls('Choose Your Weapon').subscribe(
-      data => {
-        this.steps[0] = data;
-        this.stepstitle[0] = 'Choose Your Weapon';
+    //const important to work async
+
+    var controlSteps = ["Colorways","Accessories","Extras"];
+    for(var i = 0; i < controlSteps.length; i++){
+
+      const name = controlSteps[i];
+
+      this.controlService.getControls(name).subscribe(
+        data => {
+
+          this.stepsdata[name] = [];
+          this.stepstitle.push(name);
+
+          for(var j = 0; j < data.length; j++){
+
+            const keys = j;
+            this.stepsdata[name].push(data[keys]);
+
+          }
       });
-    this.controlService.getControls('Colorways').subscribe(
+    }
+
+    this.controlService.getControlsBike('Steps e8000 ebullitt full bike').subscribe(
       data => {
-        this.steps[1] = data;
-        this.stepstitle[1] = 'Colorways';
+        for(var i = 0; i < data.length; i++){
+
+          const index = i;
+
+          this.stepstitle.push(data[index].$key);
+          const customizeName = data[index].$key;
+          this.stepsdata[customizeName] = [];
+
+          this.controlService.getControlsCustomize('Steps e8000 ebullitt full bike', customizeName).subscribe(
+            customize => {
+
+              for(var j = 0; j < customize.length; j++){
+                const k = j;
+
+                this.stepsdata[customizeName].push(customize[k]);
+
+              }
+          });
+        }
       });
-    this.controlService.getControls('Drive Train').subscribe(
-      data => {
-        this.steps[2] = data;
-        this.stepstitle[2] = 'Drive Train';
-      });
-    this.controlService.getControls('Customise').subscribe(
-      data => {
-        this.steps[3] = data;
-        this.stepstitle[3] = 'Customise';
-      });
-    this.controlService.getControls('Accessories').subscribe(
-      data => {
-        this.steps[4] = data;
-        this.stepstitle[4] = 'Accessories';
-      });
-    this.controlService.getControls('Extras').subscribe(
-      data => {
-        this.steps[5] = data;
-        this.stepstitle[5] = 'Extras';
-      });
+
   }
 
   next() {
-    if (this.currentstep < 5) {
+    if (this.currentstep < this.stepstitle.length - 1) {
       this.currentstep = this.currentstep + 1;
-    } else if (this.currentstep == 5) {
-      document.getElementById('nextbutton').innerText = "Finish and Go to cart"
+    }
+    else if (this.currentstep == this.stepstitle.length - 1) {
+      document.getElementById('nextbutton').innerText = "Finish and Go to cart";
     }
   }
 
   back() {
     if (this.currentstep > 0) {
       this.currentstep = this.currentstep - 1;
-      document.getElementById('nextbutton').innerText = "Next";
+      document.getElementById('nextbutton').innerHTML = 'Next <i class="fas fa-angle-right"></i>';
     }
   }
 

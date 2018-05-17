@@ -3,31 +3,37 @@
 </div>
 <div id="bike-section-content" class="px-2 text-center text-sm-left">
 
-<div class="container-fluid py-3">
-
+<div class="container-fluid py-4">
+<!--
 <div class="card ">
   <div class="card-body">
     <table class="table table-hover">
       <tbody>
-        <tr *ngFor="let item of steps[currentstep]">
+        <tr *ngFor="let item of stepsdata[stepstitle[currentstep]]">
           <td>{{item.$key}}</td>
-          <td></td>
+          <td>€ {{item["price"]}}</td>
           <td>More info</td>
         </tr>
       </tbody>
     </table>
   </div>
-
+</div>
+-->
+<div class="row" *ngFor="let item of stepsdata[stepstitle[currentstep]]">
+  <div class="col-sm-6">{{item.$key}}</div>
+  <div class="col-sm-3">+€ {{item["price"]}}</div>
+  <div class="col-sm-3">More info</div>
 </div>
 
+
+
+
+</div>
 </div>
 
-
-</div>
-
-<div id="bike-navigation">
-  <div class="card-footer text-muted">
-    <a href="#" (click)="back()" class="btn btn-primary float-left">Back</a>
-    <a href="#" id="nextbutton" (click)="next()" class="btn btn-primary float-right">Next</a>
+<div id="bike-navigation" class="container-fluid">
+  <div class="row">
+    <div class="col-6"><button type="button" (click)="back()" class="btn btn-outline-primary"><i class="fas fa-angle-left"></i> Back</button></div>
+    <div class="col-6 text-right"><button id="nextbutton" type="button" (click)="next()" class="btn btn-outline-primary">Next <i class="fas fa-angle-right"></i></button></div>
   </div>
 </div>

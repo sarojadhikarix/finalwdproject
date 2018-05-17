@@ -6,9 +6,16 @@ export class ControlService{
   constructor(private db: AngularFireDatabase) {
   }
 
+  getControlsBike(bike){
+    return this.db.list('/Bikes/' + bike + '/Components');
+  }
+
+  getControlsCustomize(bike, customize){
+    return this.db.list('/Bikes/' + bike + '/Components/' + customize);
+  }
+
   getControls(title){
     return  this.db.list('/' + title);
   }
 
 }
-
