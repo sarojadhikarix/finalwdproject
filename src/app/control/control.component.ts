@@ -58,7 +58,7 @@ export class ControlComponent implements OnInit {
                 const k = j;
 
                 this.stepsdata[customizeName].push(customize[k]);
-                
+
               }
           });
         }
@@ -69,7 +69,6 @@ export class ControlComponent implements OnInit {
   next() {
     if (this.currentstep < this.stepstitle.length - 1) {
       this.currentstep = this.currentstep + 1;
-      console.log(this.stepstitle);
     }
     else if (this.currentstep == this.stepstitle.length - 1) {
       document.getElementById('nextbutton').innerText = "Finish and Go to cart";
