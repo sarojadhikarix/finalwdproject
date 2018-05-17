@@ -45,6 +45,7 @@ export class ControlComponent implements OnInit {
     this.controlService.getControlsBike('Steps e8000 ebullitt full bike').subscribe(
       data => {
         for(var i = 0; i < data.length; i++){
+
           const index = i;
 
           this.stepstitle.push(data[index].$key);
@@ -78,7 +79,7 @@ export class ControlComponent implements OnInit {
   back() {
     if (this.currentstep > 0) {
       this.currentstep = this.currentstep - 1;
-      document.getElementById('nextbutton').innerText = "Next";
+      document.getElementById('nextbutton').innerHTML = 'Next <i class="fas fa-angle-right"></i>';
     }
   }
 
