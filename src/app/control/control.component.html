@@ -1,7 +1,5 @@
-<div *ngFor="let control of controls">
-  <div >
 <div id="bike-section-title" class="card-header text-center">
-  <h1>{{ control.$key}}</h1>
+  <h1>{{stepstitle[currentstep]}}</h1>
 </div>
 <div id="bike-section-content" class="px-2 text-center text-sm-left">
 
@@ -11,9 +9,9 @@
   <div class="card-body">
     <table class="table table-hover">
       <tbody>
-        <tr *ngFor="let con of controls; let i = index" >
-          <td>{{con[i]}}</td>
-          <td></td>
+        <tr *ngFor="let item of stepsdata[stepstitle[currentstep]]">
+          <td>{{item.$key}}</td>
+          <td>€ {{item["price"]}}</td>
           <td>More info</td>
         </tr>
       </tbody>
@@ -23,15 +21,11 @@
 </div>
 
 </div>
-
-
-</div>
-</div>
 </div>
 
 <div id="bike-navigation">
   <div class="card-footer text-muted">
-    <a href="#" (click)="back()" class="btn btn-primary float-left">Back</a>
-    <a href="#" id="nextbutton" (click)="next()" class="btn btn-primary float-right">Next</a>
+    <a (click)="back()" class="btn btn-primary float-left">Back</a>
+    <a id="nextbutton" (click)="next()" class="btn btn-primary float-right">Next</a>
   </div>
 </div>
