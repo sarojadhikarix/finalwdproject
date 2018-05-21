@@ -19,9 +19,9 @@
   </div>
 </div>
 -->
-<div class="row" *ngFor="let item of stepsdata[stepstitle[currentstep]]">
+<div class="row" [style.backgroundColor]="isActive(item.$key) ? 'blue':'white'"  (click)="checkItem(item.$key, item['price'])" *ngFor="let item of stepsdata[stepstitle[currentstep]]">
   <div class="col-sm-6">{{item.$key}}</div>
-  <div class="col-sm-3">+€ {{item["price"]}}</div>
+  <div class="col-sm-3"><span *ngIf="item['price']">+€ {{item["price"]}}</span></div>
   <div class="col-sm-3">More info</div>
 </div>
 
@@ -34,6 +34,9 @@
 <div id="bike-navigation" class="container-fluid">
   <div class="row">
     <div class="col-6"><button type="button" (click)="back()" class="btn btn-outline-primary"><i class="fas fa-angle-left"></i> Back</button></div>
-    <div class="col-6 text-right"><button id="nextbutton" type="button" (click)="next()" class="btn btn-outline-primary">Next <i class="fas fa-angle-right"></i></button></div>
+    <div class="col-6 text-right">
+      <button *ngIf="!cangotocart" id="nextbutton" type="button" (click)="next()" class="btn btn-outline-primary">Next <i class="fas fa-angle-right"></i></button>
+      <button *ngIf="cangotocart" id="nextbutton" type="button" (click)="complete()" class="btn btn-outline-primary">Finish / Cart</button>
+    </div>
   </div>
 </div>

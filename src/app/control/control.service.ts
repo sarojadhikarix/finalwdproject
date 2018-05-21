@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 export class ControlService{
   constructor(private db: AngularFireDatabase) {
   }
+  
 
   getControlsBike(bike){
     return this.db.list('/Bikes/' + bike + '/Components');
@@ -16,6 +17,17 @@ export class ControlService{
 
   getControls(title){
     return  this.db.list('/' + title);
+  }
+
+
+
+  getItems(){
+    let items = JSON.parse(localStorage.getItem('basket'));
+    return items == null ? [] : items;
+  }
+
+  saveItems(basket){
+    localStorage.setItem('basket', JSON.stringify(basket));
   }
 
 }
