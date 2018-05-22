@@ -8,7 +8,7 @@ import { SelectionComponent } from './selection/selection.component';
 
 export const routing = RouterModule.forRoot([
     {path:'cart', component: CartComponent},
-    {path:'selection', component: SelectionComponent},
+    {path:'', component: SelectionComponent},
     {path:'builder/:type', component: BuilderComponent},
     {path:'**', component: NotfoundComponent}
 ]);

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ControlService } from './control.service';
+import { Item } from './item';
 
 @Component({
   selector: 'app-control',
@@ -11,19 +13,22 @@ import { ControlService } from './control.service';
 
 export class ControlComponent implements OnInit {
 
-  constructor(private controlService: ControlService) { }
+  constructor(private controlService: ControlService,
+    private _router: Router) { }
   @Input() type;
-  stepsdata:any = {};
-  stepstitle:any[] = [];
+  stepsdata: any = {};
+  stepstitle: any[] = [];
   startstep = 0;
   currentstep = 0;
+  cangotocart: boolean = false;
+  basket: Item[] = [];
 
   ngOnInit() {
 
     //const important to work async
 
-    var controlSteps = ["Colorways","Accessories","Extras"];
-    for(var i = 0; i < controlSteps.length; i++){
+    var controlSteps = ["Colorways", "Accessories", "Extras"];
+    for (var i = 0; i < controlSteps.length; i++) {
 
       const name = controlSteps[i];
 
@@ -33,18 +38,18 @@ export class ControlComponent implements OnInit {
           this.stepsdata[name] = [];
           this.stepstitle.push(name);
 
-          for(var j = 0; j < data.length; j++){
+          for (var j = 0; j < data.length; j++) {
 
             const keys = j;
             this.stepsdata[name].push(data[keys]);
 
           }
-      });
+        });
     }
 
-    this.controlService.getControlsBike('Steps e8000 ebullitt full bike').subscribe(
+    this.controlService.getControlsBike(this.type).subscribe(
       data => {
-        for(var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
 
           const index = i;
 
@@ -52,34 +57,67 @@ export class ControlComponent implements OnInit {
           const customizeName = data[index].$key;
           this.stepsdata[customizeName] = [];
 
-          this.controlService.getControlsCustomize('Steps e8000 ebullitt full bike', customizeName).subscribe(
+          this.controlService.getControlsCustomize(this.type, customizeName).subscribe(
             customize => {
 
-              for(var j = 0; j < customize.length; j++){
+              for (var j = 0; j < customize.length; j++) {
                 const k = j;
 
                 this.stepsdata[customizeName].push(customize[k]);
 
               }
-          });
+            });
         }
       });
+      this.controlService.saveChoosenWizardRoute(this.stepsdata);
 
   }
 
   next() {
     if (this.currentstep < this.stepstitle.length - 1) {
       this.currentstep = this.currentstep + 1;
-    }
-    else if (this.currentstep == this.stepstitle.length - 1) {
-      document.getElementById('nextbutton').innerText = "Finish and Go to cart";
+      if (this.currentstep == this.stepstitle.length - 1) {
+        this.cangotocart = true;
+      }
     }
   }
 
   back() {
     if (this.currentstep > 0) {
       this.currentstep = this.currentstep - 1;
-      document.getElementById('nextbutton').innerHTML = 'Next <i class="fas fa-angle-right"></i>';
+      this.cangotocart = false;
+    }
+  }
+
+  checkItem(key, price) {
+
+    if (this.checkIfExist(key)){      //check if the value exist.
+      this.basket = this.basket.filter((item) => item.name != key);
+    } else {
+      let item = new Item(key, price);
+      this.basket.push(item);
+    }
+  }
+
+  isActive(key) {
+    return this.checkIfExist(key); // check if the value exist and return true or false accordingly. 
+  }
+
+  complete() {
+    this.controlService.saveSelectedItems(this.basket);
+    this._router.navigate(['cart']);
+  }
+
+  checkIfExist(key){
+    if(this.basket.length >= 1){
+      for(let i=0; i < this.basket.length; i++){
+        if(this.basket[i].name == key){
+          return true;
+        }
+      }
+      return false;
+    }else{
+      return false;
     }
   }
 

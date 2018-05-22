@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 export class ControlService{
   constructor(private db: AngularFireDatabase) {
   }
+  
 
   getControlsBike(bike){
     return this.db.list('/Bikes/' + bike + '/Components');
@@ -16,6 +17,26 @@ export class ControlService{
 
   getControls(title){
     return  this.db.list('/' + title);
+  }
+
+
+
+  getSelectedItems(){
+    let items = JSON.parse(localStorage.getItem('basket'));
+    return items == null ? [] : items;
+  }
+
+  saveSelectedItems(basket){
+    localStorage.setItem('basket', JSON.stringify(basket));
+  }
+
+  getChoosenWizardRoute(){
+    let items = JSON.parse(localStorage.getItem('wizardroute'));
+    return items == null ? [] : items;
+  }
+
+  saveChoosenWizardRoute(wizardroute){
+    localStorage.setItem('choosenroute', JSON.stringify(wizardroute));
   }
 
 }
