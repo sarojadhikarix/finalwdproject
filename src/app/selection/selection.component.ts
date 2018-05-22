@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlService } from './../control/control.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-selection',
@@ -12,12 +13,85 @@ export class SelectionComponent implements OnInit {
   constructor(private controlService: ControlService) { }
 
   types;
+  active = true;
+
 
   ngOnInit() {
     this.controlService.getControls('Bikes').subscribe(
       data => {
         this.types = data;
+
+      });
+
+
+      $( window ).resize(function() {
+        var height = 0;
+        $(".slide").each(function(){
+          height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
+        });
+
+        $(".slidecontainer").css("height",  height);
       });
   }
+
+
+
+  selectSlide(number){
+
+    if(this.active){
+      this.active = false;
+
+      $(".slide").each(function(){
+
+        var position = $(this).index() * 100;
+        $(this).animate({
+          "marginLeft" : position - number * 100 + "vw"
+        }, 1000,"swing");
+      }).promise().done(() => {
+          this.active = true;
+      });
+    }
+  }
+
+  slideBack(){
+
+    if(this.active && $(".slide")[0].style.marginLeft != "0vw"){
+      this.animateSlide(100);
+    }
+    else if(this.active){
+      this.selectSlide($(".slide").length - 1);
+    }
+
+  }
+
+  slideNext(){
+
+    if(this.active && $(".slide")[0].style.marginLeft != (($(".slide").length - 1) * -100 + "vw").toString()){
+
+      this.animateSlide(-100);
+
+    }
+    else if(this.active){
+      this.selectSlide(0);
+    }
+  }
+
+  animateSlide(direction){
+
+    this.active = false;
+    $(".slide").each(function(){
+
+      var position = parseInt($(this)[0].style.marginLeft);
+      $(this).animate({
+        "marginLeft" : position + direction + "vw"
+
+      }, 1200,"swing");
+    }).promise().done(() => {
+
+        this.active = true;
+    });
+  }
+
+
 
 }
