@@ -7,37 +7,16 @@
 #bike-display{
 
   width: 100%;
-  background-color: rgb(238, 168, 0);
+  background: url(http://livingwod.wdfiles.com/local--files/pccontrolled:businesses/factory_heavy_industry_by_fil3d-d327zk5.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position:relative;
   /*relative makes the absoulte img children follow this container*/
-
-}
-
-#bike-section-container{
-  background-color: #f6f6f6;
-
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 992px) {
-  #bike-display{
-    width: auto;
-    height: calc(100vh - 40px - 6rem);
-    min-height: 12rem;
-
-  }
-  #bike-progress{
-    height: 5rem;
-    padding: 0.5rem 0;
-  }
-
-  #bike-section{
-    height: calc(100vh - 40px - 6rem);
-    min-height: 12rem;
-  }
 
 }

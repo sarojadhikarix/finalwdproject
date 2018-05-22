@@ -21,7 +21,8 @@
 
 #bike-navigation{
   height: 5rem;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(200,200,200,0.5  );
 
 }
 
@@ -42,6 +43,7 @@
   #bike-navigation{
     height: 5rem;
     padding: 1rem 2rem;
+
   }
 
 }
@@ -49,13 +51,25 @@
 /*
 #bike-section-content .row{
 
-  padding: .5rem 0;
-  border-bottom: 1px solid rgba(20,20,20,0.3);
+  padding: .75rem 0;
+  border-bottom: 1px solid rgba(20,20,20,0.1);
 }
 
-#bike-section-content .row:nth-child(even){
+#bike-section-content .row:last-child{
 
-  background-color: rgba(250,250,250,0.7);
+  padding: .5rem 0;
+  border-bottom: none;
+}
 
+/* #bike-section-content .row:nth-child(even){
+
+  background-color: rgba(240,240,240,0.7);
+
+} */
+
+.itemselected{
+  color: white;
+  background-color: #218838;
+  font-weight: bold;
 }
 */
