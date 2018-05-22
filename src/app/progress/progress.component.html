@@ -4,6 +4,7 @@
     <ng-container *ngFor="let step of stepstitle; let last = last">
       <div class="progress-item d-none d-lg-block">
         <div class="rounded-circle progress-icon"></div>
+
         <p class="progress-name lead">{{ step }}</p>
       </div>
       <div class="progress-bar" *ngIf="!last">
