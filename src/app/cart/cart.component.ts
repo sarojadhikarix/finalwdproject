@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   
   ngOnInit() {
 
-    this.subscription = this._route.params.subscribe(params => {
+    this._route.params.subscribe(params => {
       this.type = params['type'];
     });
 
