@@ -19,10 +19,10 @@
   </div>
 </div>
 -->
-<div class="row" [class.itemselected]="isActive(item.$key)"  (click)="checkItem(item.$key, item['price'])" *ngFor="let item of stepsdata[stepstitle[currentstep]]">
+<div class="row" [class.itemselected]="isActive(item.$key)"  (click)="checkItem(item.$key, item['price'],item['about'])" *ngFor="let item of stepsdata[stepstitle[currentstep]]">
   <div class="col-sm-6">{{item.$key}}</div>
   <div class="col-sm-3"><span *ngIf="item['price']">+€ {{item["price"]}}</span></div>
-  <div class="col-sm-3">More info</div>
+  <div class="col-sm-3"><abbr title="{{item['about']}}">More+</abbr></div>
 </div>
 
 

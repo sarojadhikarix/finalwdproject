@@ -92,12 +92,12 @@ export class ControlComponent implements OnInit {
     this.fireEvent();
   }
 
-  checkItem(key, price) {
+  checkItem(key, price, about) {
 
     if (this.checkIfExist(key)){      //check if the value exist.
       this.basket = this.basket.filter((item) => item.name != key);
     } else {
-      let item = new Item(key, price);
+      let item = new Item(key, price, about);
       this.basket.push(item);
     }
   }
@@ -107,8 +107,8 @@ export class ControlComponent implements OnInit {
   }
 
   complete() {
-    this.controlService.saveSelectedItems(this.basket);
-    this._router.navigate(['cart']);
+    this.controlService.saveSelectedItems(this.basket, this.type);
+    this._router.navigate(['cart/'+ this.type]);
   }
 
   checkIfExist(key){
