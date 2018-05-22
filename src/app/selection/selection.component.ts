@@ -20,9 +20,21 @@ export class SelectionComponent implements OnInit {
     this.controlService.getControls('Bikes').subscribe(
       data => {
         this.types = data;
+
       });
 
+
+      $( window ).resize(function() {
+        var height = 0;
+        $(".slide").each(function(){
+          height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
+        });
+
+        $(".slidecontainer").css("height",  height);
+      });
   }
+
+
 
   selectSlide(number){
 
@@ -60,7 +72,7 @@ export class SelectionComponent implements OnInit {
 
     }
     else if(this.active){
-      this.selectSlide(1);
+      this.selectSlide(0);
     }
   }
 
@@ -79,5 +91,7 @@ export class SelectionComponent implements OnInit {
         this.active = true;
     });
   }
+
+
 
 }
