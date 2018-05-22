@@ -7,7 +7,11 @@ img{
   overflow: hidden;
   padding-left: 0px;
   padding-right: 0px;
-  background-image: url(https://wallpapercave.com/wp/ZDRooQC.jpg);
+  background: url(https://wallpapercave.com/wp/ZDRooQC.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 }
 
@@ -20,13 +24,14 @@ img{
 
 .slide-img{
   max-width: 100%;
-
+  margin: 1.5rem;
 }
 
 .slide-img img{
-  max-height: calc(80vh - 7.5rem);
+  max-height: calc(80vh - 11.5rem);
   min-height: 5rem;
   max-width: 100%;
+
   object-fit: cover;
   margin-left: auto;
   margin-right: auto;
