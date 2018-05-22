@@ -14,8 +14,7 @@ export class CartComponent implements OnInit {
   basket: Item[] = [];
   
   ngOnInit() {
-    this.basket = this.controlService.getItems();
-    console.log(this.basket);
+    this.basket = this.controlService.getSelectedItems();
   }
 
 }

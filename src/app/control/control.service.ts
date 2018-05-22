@@ -21,13 +21,22 @@ export class ControlService{
 
 
 
-  getItems(){
+  getSelectedItems(){
     let items = JSON.parse(localStorage.getItem('basket'));
     return items == null ? [] : items;
   }
 
-  saveItems(basket){
+  saveSelectedItems(basket){
     localStorage.setItem('basket', JSON.stringify(basket));
+  }
+
+  getChoosenWizardRoute(){
+    let items = JSON.parse(localStorage.getItem('wizardroute'));
+    return items == null ? [] : items;
+  }
+
+  saveChoosenWizardRoute(wizardroute){
+    localStorage.setItem('choosenroute', JSON.stringify(wizardroute));
   }
 
 }

@@ -68,3 +68,9 @@
   background-color: rgba(240,240,240,0.7);
 
 } */
+
+.itemselected{
+  color: white;
+  background-color: #218838;
+  font-weight: bold;
+}

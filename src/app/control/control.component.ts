@@ -69,6 +69,7 @@ export class ControlComponent implements OnInit {
             });
         }
       });
+      this.controlService.saveChoosenWizardRoute(this.stepsdata);
 
   }
 
@@ -90,22 +91,34 @@ export class ControlComponent implements OnInit {
 
   checkItem(key, price) {
 
-    if (){      //check if the value exist.
+    if (this.checkIfExist(key)){      //check if the value exist.
       this.basket = this.basket.filter((item) => item.name != key);
     } else {
       let item = new Item(key, price);
       this.basket.push(item);
     }
-    console.log(this.basket);
   }
 
   isActive(key) {
-    return ; // check if the value exist and return true or false accordingly. 
+    return this.checkIfExist(key); // check if the value exist and return true or false accordingly. 
   }
 
   complete() {
-    this.controlService.saveItems(this.basket);
+    this.controlService.saveSelectedItems(this.basket);
     this._router.navigate(['cart']);
+  }
+
+  checkIfExist(key){
+    if(this.basket.length >= 1){
+      for(let i=0; i < this.basket.length; i++){
+        if(this.basket[i].name == key){
+          return true;
+        }
+      }
+      return false;
+    }else{
+      return false;
+    }
   }
 
 }
