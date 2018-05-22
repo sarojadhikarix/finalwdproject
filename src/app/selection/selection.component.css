@@ -8,7 +8,7 @@ img{
   padding-left: 0px;
   padding-right: 0px;
   background-image: url(https://wallpapercave.com/wp/ZDRooQC.jpg);
-  height: 600px;
+
 }
 
 .slide{
@@ -25,7 +25,7 @@ img{
 
 .slide-img img{
   max-height: calc(80vh - 7.5rem);
-  min-height: 10rem;
+  min-height: 5rem;
   max-width: 100%;
   object-fit: cover;
   margin-left: auto;

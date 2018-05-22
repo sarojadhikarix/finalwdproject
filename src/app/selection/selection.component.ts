@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ControlService } from './../control/control.service';
 import * as $ from 'jquery';
 
@@ -8,7 +8,7 @@ import * as $ from 'jquery';
   styleUrls: ['./selection.component.css'],
   providers: [ControlService]
 })
-export class SelectionComponent implements OnInit {
+export class SelectionComponent implements OnInit, AfterContentChecked {
 
   constructor(private controlService: ControlService) { }
 
@@ -24,7 +24,9 @@ export class SelectionComponent implements OnInit {
       });
 
 
+
       $( window ).resize(function() {
+
         var height = 0;
         $(".slide").each(function(){
           height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
@@ -34,6 +36,25 @@ export class SelectionComponent implements OnInit {
       });
   }
 
+   ngAfterContentChecked(){
+
+    (function($){
+      $(".slide-img img").on("load", function(){
+
+        var height = 0;
+
+        $(".slide").each(function(){
+          height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
+        });
+
+        $(".slidecontainer").css("height",  height);
+      });
+
+
+
+    })(jQuery);
+
+  }
 
 
   selectSlide(number){
