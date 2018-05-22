@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from './control.service';
 import { Item } from './item';
@@ -22,6 +22,8 @@ export class ControlComponent implements OnInit {
   currentstep = 0;
   cangotocart: boolean = false;
   basket: Item[] = [];
+
+  @Output() progressBarUpdated = new EventEmitter();
 
   ngOnInit() {
 
@@ -69,7 +71,6 @@ export class ControlComponent implements OnInit {
             });
         }
       });
-      this.controlService.saveChoosenWizardRoute(this.stepsdata);
 
   }
 
@@ -80,6 +81,7 @@ export class ControlComponent implements OnInit {
         this.cangotocart = true;
       }
     }
+    this.fireEvent();
   }
 
   back() {
@@ -87,6 +89,7 @@ export class ControlComponent implements OnInit {
       this.currentstep = this.currentstep - 1;
       this.cangotocart = false;
     }
+    this.fireEvent();
   }
 
   checkItem(key, price) {
@@ -118,6 +121,19 @@ export class ControlComponent implements OnInit {
       return false;
     }else{
       return false;
+    }
+  }
+
+  fireEvent(){
+    // var evt = document.createEvent("HTMLEvents");
+    // evt.initEvent('stepChanges', false, true);
+
+    var evt = new CustomEvent(
+      'stepChanges',
+      { detail: { 'currentstep': this.currentstep + 1 } }
+  );
+    if (document.getElementById('mainProgressBar') != null) {
+        document.getElementById('mainProgressBar').dispatchEvent(evt);
     }
   }
 
