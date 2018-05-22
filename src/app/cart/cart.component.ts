@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
   findTotal(){
     if(this.basket.length >= 1){
     for(let i=0; i<this.basket.length; i++){
-      this.total = this.total + parseInt(this.basket[i].price);
+      this.total = this.total +this.basket[i].price;
     }
     }
   }

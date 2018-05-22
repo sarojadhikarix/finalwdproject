@@ -69,6 +69,6 @@
 
 .itemselected{
   color: white;
-  background-color: #218838;
+  background-color: rgb(78,219,109) !important;
   font-weight: bold;
 }
