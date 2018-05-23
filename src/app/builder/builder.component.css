@@ -20,8 +20,8 @@
 @media (max-width: 991px) {
 
   #bike-display{
-    height: 100px;
-
+    height: auto;
+    min-height: 6rem;
   }
 
 }
