@@ -39,7 +39,7 @@
     <div class="col-5">
       <button (click)="back()" type="button" class="btn btn-outline-primary"><i class="fas fa-angle-left"></i> Back</button>
     </div>
-    <div class="col-2 text-center"><p class="lead">£213132</p></div>
+    <div class="col-2 text-center"><p class="lead">€{{ totalprice }}</p></div>
     <div class="col-5 text-right">
         <button *ngIf="!cangotocart" id="nextbutton" (click)="next()" type="button" class="btn btn-outline-primary">Next <i class="fas fa-angle-right"></i></button>
         <button *ngIf="cangotocart" id="nextbutton" (click)="complete()" type="button" class="btn btn-outline-primary">Finish / Cart <i class="fas fa-angle-right"></i></button>
