@@ -1,9 +1,8 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ControlService } from './../control/control.service';
 
-//import * as $ from 'jquery';
+import * as $ from 'jquery';
 
-declare var $: any;
 
 @Component({
   selector: 'app-selection',
@@ -41,23 +40,8 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
    ngAfterContentChecked(){
 
-    // (function($){
-    //   $(".slide-img img").on("load", function(){
-
-    //     var height = 0;
-
-    //     $(".slide").each(function(){
-    //       height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
-    //     });
-
-    //     $(".slidecontainer").css("height",  height);
-    //   });
-
-
-
-    // })(jQuery);
-
-          $(".slide-img img").on("load", function(){
+    (function($){
+      $(".slide-img img").on("load", function(){
 
         var height = 0;
 
@@ -67,6 +51,10 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
         $(".slidecontainer").css("height",  height);
       });
+
+
+
+    })(jQuery);
 
   }
 
