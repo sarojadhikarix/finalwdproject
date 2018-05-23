@@ -25,8 +25,6 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
       });
 
-
-
       $( window ).resize(function() {
 
         var height = 0;
@@ -36,6 +34,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
         $(".slidecontainer").css("height",  height);
       });
+
   }
 
    ngAfterContentChecked(){
@@ -50,6 +49,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
         });
 
         $(".slidecontainer").css("height",  height);
+
       });
 
 
@@ -64,6 +64,8 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
     if(this.active){
       this.active = false;
 
+      this.selectSlideIcon(number + 1);
+
       $(".slide").each(function(){
 
         var position = $(this).index() * 100;
@@ -71,6 +73,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
           "marginLeft" : position - number * 100 + "vw"
         }, 1000,"swing");
       }).promise().done(() => {
+
           this.active = true;
       });
     }
@@ -101,6 +104,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
   animateSlide(direction){
 
+    this.selectSlideIcon((parseInt($(".slide:nth-child(1)")[0].style.marginLeft)+direction)/-100+1);
     this.active = false;
     $(".slide").each(function(){
 
@@ -115,6 +119,10 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
     });
   }
 
+  selectSlideIcon(number){
+    $(".slide-selection").removeClass("select-slide-current");
+    $(".slide-selection:nth-child("+number+")").addClass("select-slide-current");
 
+  }
 
 }

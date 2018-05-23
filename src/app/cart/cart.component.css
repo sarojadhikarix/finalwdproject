@@ -1,9 +1,3 @@
-#shopping{
-  /*navbar got 40px height and 1rem padding hence this*/
-  padding-top: 40px;
-  margin-top: 1rem;
-}
-
 #shopping p{
   margin-bottom: 0;
   padding-top: 0.75rem;
