@@ -39,9 +39,14 @@
     <div class="col-md-2 text-center d-block d-md-none divide-half-col">
       <button (click)="slideNext()" type="button" class="btn btn-outline-primary mt-4">Next <i class="fas fa-angle-right"></i></button>
     </div>
-    <div class="col-md-8 text-center slide-select" >
-
-      <button type="button" class="slide-selection btn btn-outline-primary rounded-circle" *ngFor="let type of types; let i = index" (click)="selectSlide(i)"><i class="fas fa-bicycle h2"></i></button>
+    <div class="col-md-8 text-center slide-select">
+      <button type="button"
+              class="slide-selection btn btn-outline-primary rounded-circle"
+              *ngFor="let type of types; let i = index"
+              (click)="selectSlide(i)"
+              [class.select-slide-current]="i < 1">
+                <i class="fas fa-bicycle h2"></i>
+      </button>
     </div>
     <div class="col-md-2 text-center d-none d-md-block">
       <button (click)="slideNext()" type="button" class="btn btn-outline-primary mt-4">Next <i class="fas fa-angle-right"></i></button>
