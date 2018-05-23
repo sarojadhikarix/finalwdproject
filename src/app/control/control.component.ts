@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from './control.service';
 import { Item } from './item';
+import { empty } from 'rxjs/observable/empty';
 
 @Component({
   selector: 'app-control',
@@ -26,6 +27,13 @@ export class ControlComponent implements OnInit {
   @Output() progressBarUpdated = new EventEmitter();
 
   ngOnInit() {
+
+    if(this.basket.length <= 0){
+      
+      if(this.controlService.getSelectedItems() != []){
+        this.basket = this.controlService.getSelectedItems();
+      }
+    }
 
     //const important to work async
 
@@ -107,7 +115,7 @@ export class ControlComponent implements OnInit {
   }
 
   complete() {
-    this.controlService.saveSelectedItems(this.basket, this.type);
+    this.controlService.saveSelectedItems(this.basket);
     this._router.navigate(['cart/'+ this.type]);
   }
 

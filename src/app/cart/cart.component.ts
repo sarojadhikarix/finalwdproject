@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ControlService } from './../control/control.service';
-import { Item } from './../control/item';
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,12 +12,13 @@ import { Item } from './../control/item';
 export class CartComponent implements OnInit {
 
   constructor(private controlService: ControlService,
-              private _route: ActivatedRoute) { }
+    private _route: ActivatedRoute,
+    private _router: Router) { }
 
-  basket: Item[] = [];
+  basket = [];
   total: number = 0;
   type;
-  
+
   ngOnInit() {
 
     this._route.params.subscribe(params => {
@@ -29,19 +30,31 @@ export class CartComponent implements OnInit {
     this.findTotal();
   }
 
-  findTotal(){
-    if(this.basket.length >= 1){
-    for(let i=0; i<this.basket.length; i++){
-      this.total = this.total +this.basket[i].price;
-    }
+  findTotal() {
+    if (this.basket.length >= 1) {
+      for (let i = 0; i < this.basket.length; i++) {
+        if (typeof this.basket[i].price != 'undefined' && this.basket[i].price > 0) {
+          this.total = this.total + parseFloat( this.basket[i].price);
+        }
+      }
     }
   }
 
-  deleteItem(key){
+  deleteItem(key) {
     this.basket = this.basket.filter((item) => item.name != key);
     this.total = 0;
     this.findTotal();
 
+  }
+
+  checkOut(){
+    this.controlService.saveSelectedItems(this.basket);
+    // Need this one
+  }
+
+  backToShopping(){
+    this.controlService.saveSelectedItems(this.basket);
+    this._router.navigate(['builder/'+ this.type]);
   }
 
 }

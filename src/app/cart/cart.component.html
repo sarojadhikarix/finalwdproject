@@ -2,7 +2,7 @@
   <h1 class="my-4">Shopping Cart</h1>
 
   <div class="row my-2 d-none d-md-flex bg-op-info">
-    <div class="col-md-4">{{type}}</div>
+    <div class="col-md-4"><b>Bike type: {{type}}</b></div>
     <div class="col-md-6">
       <h5 class="my-1">Quantity</h5>
 
@@ -10,6 +10,7 @@
     <div class="col-md-2"><h5 class="my-1">Price</h5></div>
   </div>
 
+  <div *ngIf="basket.length <= 0">You did not select any item during the building process. Click on go to shopping button to start again.</div>
 
   <div class="row shopping-item" *ngFor="let item of basket">
     <div class="col-md-4"><p class="lead">{{ item.name }}</p></div>
@@ -44,10 +45,10 @@
 
   <div class="row mt-4">
     <div class="col-sm-6 text-center  text-sm-left">
-      <button type="button" class="btn btn-outline-success"><i class="fas fa-long-arrow-alt-left"></i> Back to shopping</button>
+      <button type="button" (click)="backToShopping()" class="btn btn-outline-success"><i class="fas fa-long-arrow-alt-left"></i> Back to shopping</button>
     </div>
     <div class="col-sm-6 text-center text-sm-right">
-      <button type="button" class="btn btn-outline-success">Checkout <i class="far fa-credit-card"></i></button>
+      <button type="button" (click)="checkOut()" class="btn btn-outline-success">Checkout <i class="far fa-credit-card"></i></button>
     </div>
   </div>
 

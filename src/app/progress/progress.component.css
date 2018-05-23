@@ -29,8 +29,8 @@
     height: 0.4rem;
     width: 100%;
     background-color: white;
-    border-top: 0.15rem solid black;
-    border-bottom: 0.15rem solid black;
+    border-top: 0.05rem solid rgba(95, 93, 93, 0.432);
+    border-bottom: 0.05rem solid rgba(95, 93, 93, 0.432);
 
   }
 
@@ -50,5 +50,9 @@
     width: 10rem;
     margin-left: calc(-50% - 2rem);
 
+  }
+
+  .progress-completed{
+    background-color:rgba(18, 216, 84, 0.733);
   }
 }

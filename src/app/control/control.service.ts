@@ -26,7 +26,7 @@ export class ControlService{
     return items == null ? [] : items;
   }
 
-  saveSelectedItems(basket, type){
+  saveSelectedItems(basket){
     localStorage.setItem('basket', JSON.stringify(basket));
   }
 }
