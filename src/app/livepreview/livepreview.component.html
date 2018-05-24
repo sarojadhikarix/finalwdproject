@@ -1,5 +1,7 @@
+
 <div id="mainLivePreview" (basketChanges)="getPreviewUpdated($event)">
     
         <img  *ngFor="let item of basket" [class.itemselected]="isActive(item.name)" style="display:none;" src="{{'../assets/images/components/' + item.name  + '.png'}}" alt="">
    
 </div>
+
