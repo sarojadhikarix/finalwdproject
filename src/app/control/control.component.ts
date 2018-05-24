@@ -115,7 +115,7 @@ export class ControlComponent implements OnInit {
   }
 
   isActive(key) {
-    return this.checkIfExist(key); // check if the value exist and return true or false accordingly. 
+    return this.checkIfExist(key); // check if the value exist and return true or false accordingly.
   }
 
   complete() {
