@@ -1,0 +1,21 @@
+<div id="mainProgressBar" (stepChanges)="getProgressBarStats($event)">
+<div id="progress-container">
+  
+    <ng-container *ngFor="let step of stepstitle; let i = index">
+      <div class="progress-item d-none d-lg-block">
+        <div class="rounded-circle progress-icon"></div>
+
+        <p class="progress-name lead">{{ step }}</p>
+      </div>
+      <div class="progress-bar" [class.progress-completed]="currentstep >= i+2">
+        <div class="progress-percent"></div>
+      </div>
+    </ng-container>
+    <div class="progress-item d-none d-lg-block">
+      <div class="rounded-circle progress-icon"></div>
+
+      <p class="progress-name lead">Cart</p>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+img{
+  padding: 2rem;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  display: block;
+}
+
+img:first-child{
+  position: static;
+}
+
+@media (max-width: 300px) {
+
+  img{
+    padding: 0.3rem;
+  }
+}

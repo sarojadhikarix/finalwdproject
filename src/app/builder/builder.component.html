@@ -1,3 +1,18 @@
-<p>
-  builder works!
-</p>
+
+<app-header></app-header>
+
+<div class="container-fluid" id="bike-container">
+  <div class="row">
+    <div id="bike-display-container" class="col-lg-8 px-0">
+      <app-livepreview id="bike-display" class="p-2"></app-livepreview>
+      <div id="bike-progress">
+        <app-progress  [type]="type"></app-progress>
+      </div>
+    </div>
+    <div id="bike-section-container" class="col-lg-4 px-0">
+      <div id="bike-section" >
+          <app-control  [type]="type"></app-control>
+      </div>
+    </div>
+  </div>
+</div>

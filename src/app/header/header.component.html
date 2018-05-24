@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a [routerLink]="['/']" class="navbar-brand">Larry vs Harry</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a [routerLink]="['/']" class="nav-link">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/none']" class="nav-link">Features</a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/cart/']" class="nav-link">Cart</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
