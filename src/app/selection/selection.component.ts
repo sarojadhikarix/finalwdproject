@@ -16,7 +16,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
   types;
   active = true;
-
+  loopOnce = true;
 
   ngOnInit() {
     this.controlService.getControls('Bikes').subscribe(
@@ -24,8 +24,6 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
         this.types = data;
 
       });
-
-
 
       $( window ).resize(function() {
 
@@ -36,33 +34,35 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
         $(".slidecontainer").css("height",  height);
       });
+
   }
 
-   ngAfterContentChecked(){
+ngAfterContentChecked(){
 
-    (function($){
+    //dummyArg is to avoid Angular errors
+    (function(dummyArg){
+
       $(".slide-img img").on("load", function(){
 
         var height = 0;
-
         $(".slide").each(function(){
           height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
+
         });
 
         $(".slidecontainer").css("height",  height);
+
       });
+    })($);
 
-
-
-    })(jQuery);
-
-  }
-
+}
 
   selectSlide(number){
 
     if(this.active){
       this.active = false;
+
+      this.selectSlideIcon(number + 1);
 
       $(".slide").each(function(){
 
@@ -71,6 +71,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
           "marginLeft" : position - number * 100 + "vw"
         }, 1000,"swing");
       }).promise().done(() => {
+
           this.active = true;
       });
     }
@@ -101,6 +102,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
   animateSlide(direction){
 
+    this.selectSlideIcon((parseInt($(".slide:nth-child(1)")[0].style.marginLeft)+direction)/-100+1);
     this.active = false;
     $(".slide").each(function(){
 
@@ -115,6 +117,10 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
     });
   }
 
+  selectSlideIcon(number){
+    $(".slide-selection").removeClass("select-slide-current");
+    $(".slide-selection:nth-child("+number+")").addClass("select-slide-current");
 
+  }
 
 }

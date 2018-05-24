@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="container" id="shopping">
   <h1 class="my-4">Shopping Cart</h1>
 
@@ -10,7 +12,7 @@
     <div class="col-md-2"><h5 class="my-1">Price</h5></div>
   </div>
 
-  <div *ngIf="basket.length <= 0">You did not select any item during the building process. Click on go to shopping button to start again.</div>
+  <div *ngIf="basket.length <= 0">You have not selected any items during the building process. Click on the Back to shopping button to start again.</div>
 
   <div class="row shopping-item" *ngFor="let item of basket">
     <div class="col-md-4"><p class="lead">{{ item.name }}</p></div>

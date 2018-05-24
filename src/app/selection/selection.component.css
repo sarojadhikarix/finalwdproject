@@ -1,13 +1,9 @@
-img{
-  max-width: 100%;
-}
-
 .slidecontainer{
   position:relative;
   overflow: hidden;
   padding-left: 0px;
   padding-right: 0px;
-  background: url(https://wallpapercave.com/wp/ZDRooQC.jpg) no-repeat center center;
+  background: url(https://wallpapercave.com/wp/ZDRooQC.jpg) no-repeat bottom center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -23,34 +19,32 @@ img{
 }
 
 .slide-img{
+  min-height: 5rem;
   max-width: 100%;
-  margin: 1.5rem;
+  margin: 3rem 1.5rem 1.5rem;
 }
 
 .slide-img img{
-  max-height: calc(80vh - 11.5rem);
+  max-height: calc(100vh - 22rem);
   min-height: 5rem;
   max-width: 100%;
-
   object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
 
+.container-info{
+  max-width: 800px;
+}
+
 .slide-info{
-  background-color: rgba(240, 240, 240, 0.7);
+  background-color: rgba(240, 240, 240, 0.8);
   padding: 1rem;
-
-
 }
 
 .slide-info h2{
   font-weight: 300;
-}
-
-.control-button{
-
 }
 
 .slide-select{
@@ -59,31 +53,19 @@ img{
   justify-content: space-around;
 }
 
-.slide-selection-object{
-  position: relative;
-  height: 7.5rem;
-  background-color: green;
-  width: 14rem;
-  line-height: 1rem;
+.slide-selection{
+  flex: none;
+  height: 4rem;
+  width: 4rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.25rem;
   margin: 1rem;
-
 }
 
-.slide-icon{
-  height: 6rem;
-  width: 14rem;
-  background-color: red;
-}
-
-.slide-name{
-
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 0;
-  text-align: center;
-  width: 14rem;
-  padding: 0.25rem 0;
-
+.select-slide-current{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 @media (min-width: 240px) {
