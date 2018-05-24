@@ -39,7 +39,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
    ngAfterContentChecked(){
 
-    (function($){
+    $(function(){
       $(".slide-img img").on("load", function(){
 
         var height = 0;
@@ -54,7 +54,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
 
 
-    })(jQuery);
+    });
 
   }
 
