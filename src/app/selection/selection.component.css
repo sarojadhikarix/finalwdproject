@@ -1,0 +1,77 @@
+.slidecontainer{
+  position:relative;
+  overflow: hidden;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: url(https://wallpapercave.com/wp/ZDRooQC.jpg) no-repeat bottom center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.slide{
+  width: 100vw;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+}
+
+.slide-img{
+  min-height: 5rem;
+  max-width: 100%;
+  margin: 3rem 1.5rem 1.5rem;
+}
+
+.slide-img img{
+  max-height: calc(100vh - 22rem);
+  min-height: 5rem;
+  max-width: 100%;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.container-info{
+  max-width: 800px;
+}
+
+.slide-info{
+  background-color: rgba(240, 240, 240, 0.8);
+  padding: 1rem;
+}
+
+.slide-info h2{
+  font-weight: 300;
+}
+
+.slide-select{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.slide-selection{
+  flex: none;
+  height: 4rem;
+  width: 4rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.25rem;
+  margin: 1rem;
+}
+
+.select-slide-current{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+@media (min-width: 240px) {
+
+  .divide-half-col{
+    width: 50%;
+  }
+
+}

@@ -1,19 +1,45 @@
 import {Injectable} from '@angular/core';
-import {Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {Http} from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { FirebaseAppName, FirebaseApp } from 'angularfire2';
+import { _firebaseAppFactory } from 'angularfire2/firebase.app.module';
+import { firebaseConfigForControls, firebaseConfigForSales } from './../app.module';
+
+import * as firebase from 'firebase';
+import 'firebase/storage';
 
 @Injectable()
-export class BuilderService{
-  constructor(private http: Http) {
+export class ControlService{
+
+  public ddb: FirebaseApp;
+
+  constructor(private db: AngularFireDatabase) {
+    
   }
 
-  getControls(){
-      var controls = ['Learning Angular 2', "Pro TypeScript", "ASP.NET"]; 
+
+  getControlsBike(bike){
+    //this.db = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForControls, 'controls'));
+    return this.db.list('/Bikes/' + bike + '/Components');
   }
 
+  getControlsCustomize(bike, customize){
+    return this.db.list('/Bikes/' + bike + '/Components/' + customize);
+  }
+
+  getControls(title){
+    return  this.db.list('/' + title);
+  }
+
+
+
+  getSelectedItems(){
+    let items = JSON.parse(localStorage.getItem('basket'));
+    return items == null ? [] : items;
+  }
+
+  saveSelectedItems(basket){
+    localStorage.setItem('basket', JSON.stringify(basket));
+  }
 }
 

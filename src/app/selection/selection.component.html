@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="container-fluid slidecontainer">
+
+  <div
+    *ngFor="let type of types; let i = index"
+    class="slide"
+    [ngStyle]="{marginLeft: i * 100 + 'vw'}"
+    >
+    <div class="slide-img">
+      <img src="{{type.Information.image}}" alt="">
+
+    </div>
+    <div class="slide-info container-fluid">
+      <div class="container">
+          <div class="row">
+
+            <div class="col-md-8">
+                <h2>{{type.$key}}</h2>
+                <p class="lead">{{type.Information.about}}</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+              <button routerLink="/builder/{{type.$key}}" type="button" class="btn btn-outline-primary">To the builder <i class="fas fa-angle-right"></i></button>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container control-button">
+  <div class="row">
+    <div class="col-md-2 text-center divide-half-col">
+      <button (click)="slideBack()" type="button" class="btn btn-outline-primary mt-4"><i class="fas fa-angle-left"></i> Previous</button>
+    </div>
+    <div class="col-md-2 text-center d-block d-md-none divide-half-col">
+      <button (click)="slideNext()" type="button" class="btn btn-outline-primary mt-4">Next <i class="fas fa-angle-right"></i></button>
+    </div>
+    <div class="col-md-8 text-center slide-select">
+      <button type="button"
+              class="slide-selection btn btn-outline-primary rounded-circle"
+              *ngFor="let type of types; let i = index"
+              (click)="selectSlide(i)"
+              [class.select-slide-current]="i < 1">
+                <i class="fas fa-bicycle h2"></i>
+      </button>
+    </div>
+    <div class="col-md-2 text-center d-none d-md-block">
+      <button (click)="slideNext()" type="button" class="btn btn-outline-primary mt-4">Next <i class="fas fa-angle-right"></i></button>
+    </div>
+  </div>
+</div>

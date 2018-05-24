@@ -1,0 +1,51 @@
+#bike-section-title{
+  min-height: 3.5rem;
+  background-color: white;
+  padding: 0.5rem 0;
+}
+
+#bike-section-title h1{
+  font-size: 2rem;
+}
+
+#bike-section-content .row{
+  background-color: white;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin: 0 0.5rem;
+}
+
+#bike-navigation{
+  height: 5rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(200,200,200,0.5  );
+
+}
+
+@media (min-width: 992px) {
+
+  #bike-section-title{
+    max-height: 3.5rem;
+
+  }
+
+  #bike-section-content{
+    overflow-y: auto;
+    height: calc(100vh - 40px - 9.5rem);
+    min-height: 9rem;
+
+  }
+
+  #bike-navigation{
+    height: 5rem;
+    padding: 1rem 2rem;
+
+  }
+
+}
+
+.itemselected{
+  color: white;
+  background-color: #007bff !important;
+  
+}
