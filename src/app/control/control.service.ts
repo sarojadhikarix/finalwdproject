@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { FirebaseAppName, FirebaseApp } from 'angularfire2';
@@ -6,40 +6,47 @@ import { _firebaseAppFactory } from 'angularfire2/firebase.app.module';
 import { firebaseConfigForControls, firebaseConfigForSales } from './../app.module';
 
 import * as firebase from 'firebase';
-import 'firebase/storage';
 
 @Injectable()
-export class ControlService{
+export class ControlService {
 
   public ddb: FirebaseApp;
+  private dbcontrols: AngularFireDatabase;
+  private dbsales: AngularFireDatabase;
 
-  constructor(private db: AngularFireDatabase) {
-    
+  constructor() {
+    this.dbcontrols = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForControls, 'controls'));
+    this.dbsales = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForSales, 'sales'));
   }
 
 
-  getControlsBike(bike){
-    //this.db = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForControls, 'controls'));
-    return this.db.list('/Bikes/' + bike + '/Components');
+  getControlsBike(bike) {
+
+    return this.dbcontrols.list('/Bikes/' + bike + '/Components');
   }
 
-  getControlsCustomize(bike, customize){
-    return this.db.list('/Bikes/' + bike + '/Components/' + customize);
+  getControlsCustomize(bike, customize) {
+    return this.dbcontrols.list('/Bikes/' + bike + '/Components/' + customize);
   }
 
-  getControls(title){
-    return  this.db.list('/' + title);
+  getControls(title) {
+    return this.dbcontrols.list('/' + title);
   }
 
 
 
-  getSelectedItems(){
+  getSelectedItems() {
     let items = JSON.parse(localStorage.getItem('basket'));
     return items == null ? [] : items;
   }
 
-  saveSelectedItems(basket){
+  saveSelectedItems(basket) {
     localStorage.setItem('basket', JSON.stringify(basket));
   }
+
+  saveSales(basket) {
+    this.dbsales.list('/').push(basket);
+  }
+
 }
 

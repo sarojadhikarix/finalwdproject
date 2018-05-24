@@ -16,3 +16,8 @@ img:first-child{
     padding: 0.3rem;
   }
 }
+
+.itemselected{
+  display: block !important;
+ 
+}

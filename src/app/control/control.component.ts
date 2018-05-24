@@ -26,6 +26,7 @@ export class ControlComponent implements OnInit {
   totalprice;
 
   @Output() progressBarUpdated = new EventEmitter();
+  @Output() livePreviewUpdated = new EventEmitter();
 
   ngOnInit() {
 
@@ -112,6 +113,8 @@ export class ControlComponent implements OnInit {
     }
 
     this.findTotal();
+
+    this.fireEventForPreview();
   }
 
   isActive(key) {
@@ -146,6 +149,19 @@ export class ControlComponent implements OnInit {
     );
     if (document.getElementById('mainProgressBar') != null) {
       document.getElementById('mainProgressBar').dispatchEvent(evt);
+    }
+  }
+
+  fireEventForPreview() {
+    // var evt = document.createEvent("HTMLEvents");
+    // evt.initEvent('stepChanges', false, true);
+
+    var evt = new CustomEvent(
+      'basketChanges',
+      { detail: { 'Changes': this.basket } }
+    );
+    if (document.getElementById('mainLivePreview') != null) {
+      document.getElementById('mainLivePreview').dispatchEvent(evt);
     }
   }
 
