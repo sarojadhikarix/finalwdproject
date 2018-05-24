@@ -14,9 +14,7 @@ export class ProgressComponent implements OnInit {
 
   @Input() type;
   stepstitle: any[] = [];
-  startstep = 0;
-  currentstep = 0;
-  completedpercentage: Number = 0;
+  currentstep = 1;
 
 
   ngOnInit() {
@@ -47,8 +45,7 @@ export class ProgressComponent implements OnInit {
   }
 
   getProgressBarStats(event){
-    this.completedpercentage = (event.detail.currentstep / this.stepstitle.length) * 100;
-    console.log(this.completedpercentage);
+    this.currentstep = event.detail.currentstep;
   }
 
 }

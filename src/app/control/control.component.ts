@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from './control.service';
 import { Item } from './item';
+import { empty } from 'rxjs/observable/empty';
 
 @Component({
   selector: 'app-control',
@@ -22,10 +23,19 @@ export class ControlComponent implements OnInit {
   currentstep = 0;
   cangotocart: boolean = false;
   basket: Item[] = [];
+  totalprice;
 
   @Output() progressBarUpdated = new EventEmitter();
 
   ngOnInit() {
+
+    if (this.basket.length <= 0) {
+
+      if (this.controlService.getSelectedItems() != []) {
+        this.basket = this.controlService.getSelectedItems();
+        this.findTotal();
+      }
+    }
 
     //const important to work async
 
@@ -92,48 +102,61 @@ export class ControlComponent implements OnInit {
     this.fireEvent();
   }
 
-  checkItem(key, price) {
+  checkItem(key, price, about) {
 
-    if (this.checkIfExist(key)){      //check if the value exist.
+    if (this.checkIfExist(key)) {      //check if the value exist.
       this.basket = this.basket.filter((item) => item.name != key);
     } else {
-      let item = new Item(key, price);
+      let item = new Item(key, price, about);
       this.basket.push(item);
     }
+
+    this.findTotal();
   }
 
   isActive(key) {
-    return this.checkIfExist(key); // check if the value exist and return true or false accordingly. 
+    return this.checkIfExist(key); // check if the value exist and return true or false accordingly.
   }
 
   complete() {
     this.controlService.saveSelectedItems(this.basket);
-    this._router.navigate(['cart']);
+    this._router.navigate(['cart/' + this.type]);
   }
 
-  checkIfExist(key){
-    if(this.basket.length >= 1){
-      for(let i=0; i < this.basket.length; i++){
-        if(this.basket[i].name == key){
+  checkIfExist(key) {
+    if (this.basket.length >= 1) {
+      for (let i = 0; i < this.basket.length; i++) {
+        if (this.basket[i].name == key) {
           return true;
         }
       }
       return false;
-    }else{
+    } else {
       return false;
     }
   }
 
-  fireEvent(){
+  fireEvent() {
     // var evt = document.createEvent("HTMLEvents");
     // evt.initEvent('stepChanges', false, true);
 
     var evt = new CustomEvent(
       'stepChanges',
       { detail: { 'currentstep': this.currentstep + 1 } }
-  );
+    );
     if (document.getElementById('mainProgressBar') != null) {
-        document.getElementById('mainProgressBar').dispatchEvent(evt);
+      document.getElementById('mainProgressBar').dispatchEvent(evt);
+    }
+  }
+
+  findTotal() {
+    this.totalprice = 0;
+    if (this.basket.length >= 1) {
+      for (let i = 0; i < this.basket.length; i++) {
+        if (typeof this.basket[i].price != 'undefined' && parseFloat(this.basket[i].price) > 0) {
+            this.totalprice = this.totalprice + parseFloat(this.basket[i].price);
+        }
+      }
     }
   }
 

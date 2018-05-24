@@ -1,9 +1,11 @@
 export class Item{
     name: string = '';
-    price: number = 0;
+    price: string = '';
+    detail: string = '';
 
-    constructor(name: string, price:number){
+    constructor(name: string, price: string, detail: string){
         this.name = name;
         this.price = price;
+        this.detail = detail;
     }
 }

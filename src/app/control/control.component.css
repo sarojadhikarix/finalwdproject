@@ -8,10 +8,6 @@
   font-size: 2rem;
 }
 
-#bike-section-content{
-
-}
-
 #bike-section-content .row{
   background-color: white;
   padding-top: 0.75rem;
@@ -48,27 +44,8 @@
 
 }
 
-/*
-#bike-section-content .row{
-
-  padding: .75rem 0;
-  border-bottom: 1px solid rgba(20,20,20,0.1);
-}
-
-#bike-section-content .row:last-child{
-
-  padding: .5rem 0;
-  border-bottom: none;
-}
-
-/* #bike-section-content .row:nth-child(even){
-
-  background-color: rgba(240,240,240,0.7);
-
-} */
-
 .itemselected{
   color: white;
-  background-color: #218838;
-  font-weight: bold;
+  background-color: #007bff !important;
+  
 }

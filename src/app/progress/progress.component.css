@@ -5,8 +5,9 @@
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
-    padding: 0 10%;
+    padding: 0.5rem 10%;
     justify-content: center;
+    background-color: rgba(200,200,200,0.5 );
   }
 
   .progress-item{
@@ -21,16 +22,16 @@
 
     height: 3rem;
     width: 3rem;
-    background-color: pink;
+    background-color: #fff;
+    border: 1px solid #007bff;
+
   }
 
   .progress-bar{
     margin-top: 1.3rem;
     height: 0.4rem;
     width: 100%;
-    background-color: white;
-    border-top: 0.15rem solid black;
-    border-bottom: 0.15rem solid black;
+    background-color: #fff;
 
   }
 
@@ -50,5 +51,9 @@
     width: 10rem;
     margin-left: calc(-50% - 2rem);
 
+  }
+
+  .progress-completed{
+    background-color: #007bff;
   }
 }
