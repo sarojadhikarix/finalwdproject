@@ -16,7 +16,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
   types;
   active = true;
-
+  loopOnce = true;
 
   ngOnInit() {
     this.controlService.getControls('Bikes').subscribe(
@@ -37,27 +37,25 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
   }
 
-   ngAfterContentChecked(){
+ngAfterContentChecked(){
 
-    (function($){
+    //dummyArg is to avoid Angular errors
+    (function(dummyArg){
+
       $(".slide-img img").on("load", function(){
 
         var height = 0;
-
         $(".slide").each(function(){
           height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
+
         });
 
         $(".slidecontainer").css("height",  height);
 
       });
+    })($);
 
-
-
-    })(jQuery);
-
-  }
-
+}
 
   selectSlide(number){
 
