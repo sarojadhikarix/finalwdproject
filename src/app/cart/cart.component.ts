@@ -49,7 +49,7 @@ export class CartComponent implements OnInit {
 
   checkOut(){
     this.controlService.saveSelectedItems(this.basket);
-    // Need this one
+    this.controlService.saveSales(this.basket);
   }
 
   backToShopping(){

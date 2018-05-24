@@ -50,7 +50,7 @@ export const firebaseConfigForSales = {
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfigForControls, 'controls' ),
-    //AngularFireModule.initializeApp(firebaseConfigForSales,'sales'),
+    AngularFireModule.initializeApp(firebaseConfigForSales,'sales'),
     AngularFireDatabaseModule
 
   ],
