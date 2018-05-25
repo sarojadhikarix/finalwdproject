@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { FirebaseAppName, FirebaseApp } from 'angularfire2';
 import { _firebaseAppFactory } from 'angularfire2/firebase.app.module';
 import { firebaseConfigForControls, firebaseConfigForSales } from './../app.module';
+import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
 
@@ -14,7 +15,7 @@ export class ControlService {
   private dbcontrols: AngularFireDatabase;
   private dbsales: AngularFireDatabase;
 
-  constructor() {
+  constructor(private _router : Router) {
     this.dbcontrols = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForControls, 'controls'));
     this.dbsales = new AngularFireDatabase(_firebaseAppFactory(firebaseConfigForSales, 'sales'));
   }
@@ -46,7 +47,10 @@ export class ControlService {
 
   saveSales(basket) {
     this.dbsales.list('/').push(basket);
+    this.saveSelectedItems(null);
+    alert('Shopping completed. Bike is on its way to you :-).');
+    this._router.navigate(['/']);
+
   }
 
 }
-
