@@ -30,12 +30,14 @@ export class ControlComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.basket.length < 0) {
-      let data = this.controlService.getSelectedItems();
-      if (data.items != []) {
-        this.basket = data.items;
-        this.findTotal();
-      }
+    let datafromstorage = this.controlService.getSelectedItems();
+    if (datafromstorage.items && datafromstorage.items.length >= 0) {
+
+      this.basket = datafromstorage.items;
+      this.findTotal();
+
+    }else{
+      this.checkItem('Classic', '1440', 'none', 'else');
     }
 
     //const important to work async
@@ -83,7 +85,7 @@ export class ControlComponent implements OnInit {
         }
       });
 
-      this.checkItem('Classic', '1440', 'none', 'else');
+    
   }
 
   next() {
@@ -109,7 +111,7 @@ export class ControlComponent implements OnInit {
       for (let j = 0; j < this.stepsdata[currentsteptitle].length; j++) {
         let currentstepdata = this.stepsdata[currentsteptitle];
         for (let i = 0; i < this.basket.length; i++) {
-          if(currentstepdata[j].$key == this.basket[i].name){
+          if (currentstepdata[j].$key == this.basket[i].name) {
             this.basket = this.basket.filter((item) => item.name != currentstepdata[j].$key);
           }
         }
@@ -180,7 +182,7 @@ export class ControlComponent implements OnInit {
 
   findTotal() {
     this.totalprice = 0;
-    if (this.basket.length >= 1) {
+    if (this.basket.length >= 0) {
       for (let i = 0; i < this.basket.length; i++) {
         if (typeof this.basket[i].price != 'undefined' && parseFloat(this.basket[i].price) > 0) {
           this.totalprice = this.totalprice + parseFloat(this.basket[i].price);
