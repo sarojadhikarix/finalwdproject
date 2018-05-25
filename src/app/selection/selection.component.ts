@@ -32,6 +32,12 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
           height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
         });
 
+        var infoHeight = 0;
+        $(".slide-info .container .row").each(function(){
+          infoHeight = ($(this)[0].offsetHeight > infoHeight ? $(this)[0].offsetHeight : infoHeight);
+        });
+
+        $(".slide-info .container").css("height",  infoHeight);
         $(".slidecontainer").css("height",  height);
       });
 
@@ -47,9 +53,14 @@ ngAfterContentChecked(){
         var height = 0;
         $(".slide").each(function(){
           height = ($(this)[0].offsetHeight > height ? $(this)[0].offsetHeight : height);
-
         });
 
+        var infoHeight = 0;
+        $(".slide-info .container .row").each(function(){
+          infoHeight = ($(this)[0].offsetHeight > infoHeight ? $(this)[0].offsetHeight : infoHeight);
+        });
+
+        $(".slide-info .container").css("height",  infoHeight);
         $(".slidecontainer").css("height",  height);
 
       });
