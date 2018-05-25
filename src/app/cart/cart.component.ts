@@ -17,16 +17,13 @@ export class CartComponent implements OnInit {
 
   basket = [];
   total: number = 0;
-  type;
+  type: string = '';
 
   ngOnInit() {
 
-    this._route.params.subscribe(params => {
-      this.type = params['type'];
-    });
-
-    this.basket = this.controlService.getSelectedItems();
-
+    let data = this.controlService.getSelectedItems();
+    this.type = data['type'];
+    this.basket = data.items;
     this.findTotal();
   }
 
@@ -52,7 +49,7 @@ export class CartComponent implements OnInit {
   }
 
   backToShopping(){
-    this.controlService.saveSelectedItems(this.basket);
+    this.controlService.saveSelectedItems(this.type, this.basket);
     this._router.navigate(['builder/'+ this.type]);
   }
 

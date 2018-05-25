@@ -30,10 +30,10 @@ export class ControlComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.basket.length <= 0) {
-
-      if (this.controlService.getSelectedItems() != []) {
-        this.basket = this.controlService.getSelectedItems();
+    if (this.basket.length < 0) {
+      let data = this.controlService.getSelectedItems();
+      if (data.items != []) {
+        this.basket = data.items;
         this.findTotal();
       }
     }
@@ -135,8 +135,8 @@ export class ControlComponent implements OnInit {
   }
 
   complete() {
-    this.controlService.saveSelectedItems(this.basket);
-    this._router.navigate(['cart/' + this.type]);
+    this.controlService.saveSelectedItems(this.type, this.basket);
+    this._router.navigate(['cart/']);
   }
 
   checkIfExist(key) {
