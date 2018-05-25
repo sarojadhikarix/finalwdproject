@@ -1,7 +1,6 @@
+<img src="./assets/images/components/dummy.png" alt="">
+<ng-container  *ngFor="let item of basket">
+    <img [class.itemselected]="isActive(item.name)" src="{{'../assets/images/components/' + item.name  + '.png'}}" alt="">
+</ng-container>
 
-<div id="mainLivePreview" (basketChanges)="getPreviewUpdated($event)">
-    
-        <img  *ngFor="let item of basket" [class.itemselected]="isActive(item.name)" style="display:none;" src="{{'../assets/images/components/' + item.name  + '.png'}}" alt="">
-   
-</div>
-
+<div id="mainLivePreview" (basketChanges)="getPreviewUpdated($event)"></div>
