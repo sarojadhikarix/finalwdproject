@@ -83,6 +83,7 @@ export class ControlComponent implements OnInit {
         }
       });
 
+      this.checkItem('Classic', '1440', 'none', 'else');
   }
 
   next() {
@@ -103,7 +104,18 @@ export class ControlComponent implements OnInit {
     this.fireEvent();
   }
 
-  checkItem(key, price, about) {
+  checkItem(key, price, about, currentsteptitle) {
+    if (currentsteptitle == "Colorways" || currentsteptitle == "Saddle" || currentsteptitle == "Seatpost") {
+      for (let j = 0; j < this.stepsdata[currentsteptitle].length; j++) {
+        let currentstepdata = this.stepsdata[currentsteptitle];
+        for (let i = 0; i < this.basket.length; i++) {
+          if(currentstepdata[j].$key == this.basket[i].name){
+            this.basket = this.basket.filter((item) => item.name != currentstepdata[j].$key);
+          }
+        }
+      }
+
+    }
 
     if (this.checkIfExist(key)) {      //check if the value exist.
       this.basket = this.basket.filter((item) => item.name != key);
@@ -115,6 +127,7 @@ export class ControlComponent implements OnInit {
     this.findTotal();
 
     this.fireEventForPreview();
+
   }
 
   isActive(key) {
@@ -170,7 +183,7 @@ export class ControlComponent implements OnInit {
     if (this.basket.length >= 1) {
       for (let i = 0; i < this.basket.length; i++) {
         if (typeof this.basket[i].price != 'undefined' && parseFloat(this.basket[i].price) > 0) {
-            this.totalprice = this.totalprice + parseFloat(this.basket[i].price);
+          this.totalprice = this.totalprice + parseFloat(this.basket[i].price);
         }
       }
     }

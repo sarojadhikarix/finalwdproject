@@ -19,7 +19,6 @@ export class LivepreviewComponent implements OnInit {
 
   getPreviewUpdated(event){
     this.basket = event.detail.Changes;
-    console.log(this.basket);
   }
 
   isActive(key) {
