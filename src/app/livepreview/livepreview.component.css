@@ -4,10 +4,14 @@ img{
   max-width: 100%;
   position: absolute;
   display: block;
+  padding-left: inherit;
+  padding-right: inherit;
 }
 
 img:first-child{
   position: static;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .itemselected{

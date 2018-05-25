@@ -3,7 +3,7 @@
   height: calc(100vh - 40px - 6rem);
   min-height: 12.5rem;
   width: 100%;
-  background: url(http://livingwod.wdfiles.com/local--files/pccontrolled:businesses/factory_heavy_industry_by_fil3d-d327zk5.jpg) no-repeat center center;
+  background: url(/assets/images/background/background-builder.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -14,7 +14,7 @@
   align-items: center;
   position:relative;
   /*relative makes the absoulte img children follow this container*/
-
+  padding: 2rem;
 }
 
 @media (max-width: 991px) {
@@ -22,6 +22,16 @@
   #bike-display{
     height: auto;
     min-height: 6rem;
+
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  #bike-display{
+    padding: 1rem 0.6rem;
+
   }
 
 }
