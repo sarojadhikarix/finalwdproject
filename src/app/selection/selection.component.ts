@@ -45,8 +45,7 @@ export class SelectionComponent implements OnInit, AfterContentChecked {
 
 ngAfterContentChecked(){
 
-    //dummyArg is to avoid Angular errors
-    (function(dummyArg){
+    (function(){
 
       $(".slide-img img").on("load", function(){
 
@@ -64,7 +63,7 @@ ngAfterContentChecked(){
         $(".slidecontainer").css("height",  height);
 
       });
-    })($);
+    })();
 
 }
 
