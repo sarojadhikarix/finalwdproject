@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ControlService } from './control.service';
 import { Item } from './item';
@@ -24,12 +24,12 @@ export class ControlComponent implements OnInit {
   cangotocart: boolean = false;
   basket: Item[] = [];
   totalprice;
+  subscription;
 
   @Output() progressBarUpdated = new EventEmitter();
   @Output() livePreviewUpdated = new EventEmitter();
 
   ngOnInit() {
-
     let datafromstorage = this.controlService.getSelectedItems();
     if (datafromstorage.items && datafromstorage.items.length >= 0) {
 
@@ -38,6 +38,15 @@ export class ControlComponent implements OnInit {
 
     }else{
       this.checkItem('Classic', '1440', 'none', 'else');
+      if(this.type = 'Framekit'){
+        this.checkItem('Internal gearing', '50', 'none', 'else');
+      }
+      if(this.type == 'Full Bike'){
+        this.checkItem('Alfine 11 Gates Component Group', '1470', 'none', 'else');
+        this.checkItem('Cruiser', '40', 'none', 'else');
+        this.checkItem('Brooks B17, Black', '110', 'none', 'else');
+        this.checkItem('Short', '0', 'none', 'else');
+      }
     }
 
     //const important to work async
@@ -85,7 +94,7 @@ export class ControlComponent implements OnInit {
         }
       });
 
-    
+
   }
 
   next() {
@@ -102,6 +111,8 @@ export class ControlComponent implements OnInit {
     if (this.currentstep > 0) {
       this.currentstep = this.currentstep - 1;
       this.cangotocart = false;
+    } else {
+      this._router.navigate(['/']);
     }
     this.fireEvent();
   }

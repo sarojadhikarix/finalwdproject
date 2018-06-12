@@ -31,26 +31,27 @@ export class CartComponent implements OnInit {
     if (this.basket.length >= 1) {
       for (let i = 0; i < this.basket.length; i++) {
         if (typeof this.basket[i].price != 'undefined' && this.basket[i].price > 0) {
-          this.total = this.total + parseFloat( this.basket[i].price);
+          this.total = this.total + parseFloat(this.basket[i].price);
         }
       }
     }
   }
 
   deleteItem(key) {
-    this.basket = this.basket.filter((item) => item.name != key);
-    this.total = 0;
-    this.findTotal();
-
+    if (confirm("Are you sure that you want to delete '" + key + "' component?")) {
+      this.basket = this.basket.filter((item) => item.name != key);
+      this.total = 0;
+      this.findTotal();
+    }
   }
 
-  checkOut(){
+  checkOut() {
     this.controlService.saveSales(this.basket);
   }
 
-  backToShopping(){
+  backToShopping() {
     this.controlService.saveSelectedItems(this.type, this.basket);
-    this._router.navigate(['builder/'+ this.type]);
+    this._router.navigate(['builder/' + this.type]);
   }
 
 }
