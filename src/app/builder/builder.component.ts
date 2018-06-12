@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-builder',
   templateUrl: './builder.component.html',
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BuilderComponent implements OnInit {
 
-  constructor( private _route: ActivatedRoute ) { }
+  constructor( private _route: ActivatedRoute, private _router: Router ) { }
 
   type;
   subscription;
@@ -16,6 +16,10 @@ export class BuilderComponent implements OnInit {
     this.subscription = this._route.params.subscribe(params => {
       this.type = params['type'];
     });
+
+    if(this.type != 'Framekit' && this.type != 'Full Bike' && this.type != 'Steps e8000 ebullitt full bike' && this.type != 'Steps ebullit full bike'){
+      this._router.navigate(['**']);
+    }
   }
 
 }
